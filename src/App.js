@@ -1,8 +1,18 @@
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import FavoritesPage from "./pages/FavoritesPage";
+import HomePage from "./pages/HomePage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
     <div className="App">
-      Hello World!!!
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/Search" element={<SearchPage />} />
+        <Route path="/Favorites" element={<FavoritesPage />} />
+      </Routes>
     </div>
   );
 }
