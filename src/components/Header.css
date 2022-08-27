@@ -1,7 +1,6 @@
 .header {
   background-image: linear-gradient(rgba(0, 8, 51, 0.7), rgba(0, 8, 51, 0.7)),
     url("https://www.sideshow.com/storage/product-images/910004/marvel-classics-comic-panel-wallpaper-mural_marvel_gallery_61bbecf8c69c9.jpg");
-  /* background-image: url("https://www.sideshow.com/storage/product-images/910004/marvel-classics-comic-panel-wallpaper-mural_marvel_gallery_61bbecf8c69c9.jpg"); */
   background-position: center;
   background-repeat: repeat-x;
   height: 80px;

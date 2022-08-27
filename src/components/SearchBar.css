@@ -1,0 +1,79 @@
+.searchBar {
+  width: 100%;
+  max-width: 700px;
+}
+.input__wrapper {
+  background: rgba(255, 255, 255, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 60px;
+  padding: 10px 10px;
+  backdrop-filter: blur(4px) saturate(180%);
+  animation: slideOut 1500ms ease;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.input__box {
+  background: transparent;
+  /* width: 90%; */
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0px 20px;
+  font-size: 24px;
+  font-weight: bold 700;
+  color: black;
+  animation: slideOut-text 2500ms;
+}
+::placeholder {
+  visibility: visible;
+  color: #505050;
+}
+@keyframes slideOut {
+  0% {
+    width: 10%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes slideOut-text {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: 90%;
+    opacity: 100%;
+  }
+}
+.search__button {
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: #58629b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sb__clickable {
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+.sb__clickable:hover {
+  transform: scale(1.1);
+}
+.searchbar__icon {
+  width: 25px;
+  height: 25px;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 300ms ease;
+}

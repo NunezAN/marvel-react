@@ -1,0 +1,19 @@
+.searchPage {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+.searchPage__search {
+  padding: 56px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.section__title {
+  font-size: 45px;
+  color: white;
+}
+.section__title--search {
+  margin-bottom: 18px;
+}
