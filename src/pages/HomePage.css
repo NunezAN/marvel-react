@@ -1,0 +1,47 @@
+.homePage{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh;
+}
+.homePage--container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.homePage__img{
+    width: 100%;
+    padding: 36px 24px;
+    margin-bottom: 64px;
+}
+.homePage__title{
+    color: white;
+    font-size: 56px;
+    text-align: center;
+    padding-bottom: 60px;
+}
+.homePage__para{
+    color: white;
+    width: 60%;
+    text-align: center;
+    font-size: 18px;
+    color: #848484;
+    padding-bottom: 42px;
+}
+.homePage__left{
+    flex: 0.6;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-between;
+    padding: 24px;
+    margin: auto 0;
+    height: 70%;
+    padding-bottom: 200px;
+}
+.homePage__right{
+    flex: 0.4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
