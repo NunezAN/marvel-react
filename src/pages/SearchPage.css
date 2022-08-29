@@ -1,6 +1,13 @@
 .searchPage {
   margin: 0 auto;
   max-width: 1200px;
+  height: 91vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.searchPage::-webkit-scrollbar {
+  display: none;
 }
 .searchPage__search {
   padding: 56px 0;
@@ -17,11 +24,18 @@
 .section__title--search {
   margin-bottom: 18px;
 }
-.comic__results{
-    display: flex;
-    flex-direction: column;
+.comic__results {
+  display: flex;
+  flex-direction: column;
 }
-.results__text{
-    text-align: left;
-    color: white;
+.results__text {
+  text-align: left;
+  color: white;
+}
+.comic__results__comics--wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }

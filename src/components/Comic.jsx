@@ -1,4 +1,5 @@
 import React from "react";
+import "./Comic.css"
 
 const Comic = ({comicData}) => {
   return (
@@ -9,15 +10,6 @@ const Comic = ({comicData}) => {
           src={`${comicData.thumbnail.path}/portrait_uncanny.${comicData.thumbnail.extension}`}
           alt=""
         />
-        <div class="comic__wrapper--background"></div>
-        <div class="comic__description">
-          <p class="comic__year">
-            DATE RELEASED: {comicData.dates[0].date.substring(0, 10)}
-          </p>
-          <p class="comic__description--para">
-            {comicData.description || "NO DESCRIPTION AVAILABLE"}
-          </p>
-        </div>
       </figure>
 
       <div class="comic__title">{comicData.title}</div>

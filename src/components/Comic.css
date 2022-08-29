@@ -1,0 +1,29 @@
+.comic {
+    width: 25%;
+    padding: 24px;
+  }
+.comic:hover{
+    cursor: pointer;
+}
+  .comic__img--wrapper {
+    position: relative;
+  }
+  .comic__img {
+    transition: all 450ms ease;
+    width: 100%;
+  }
+  .comic:hover .comic__img {
+    transform: scale(1.045);
+  }
+  .comic__title {
+    font-size: 20px;
+    margin: 8px 0px;
+    text-align: center;
+    color: white;
+  }
+  .comic__year {
+    margin-bottom: 10px;
+  }
+  .comic:hover .comic__title {
+    text-decoration: underline;
+  }
