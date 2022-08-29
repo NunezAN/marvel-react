@@ -60,13 +60,17 @@ const SearchPage = () => {
       </div>
       <div className="searchPage__results">
         {isLoading ? (
-          <FontAwesomeIcon icon={faSpinner} className="searchbar__icon spin" />
+          <div className="loading__container">
+            <FontAwesomeIcon icon={faSpinner} className="loading--icon spin" />
+          </div>
         ) : (
           searchInput.length > 0 && (
             <div className="comic__results">
               <span className="results__text">
                 Found {comicCount} results containing the hero name "
-                {searchInput}"{" "}
+                {searchInput}".{" "}
+                {comicCount === 0 &&(
+                  `Also try entering the first letters of the heroes name. (e.g. \"spid\" for spider-man)`)}
               </span>
               <div className="comic__results__comics--wrapper">
                 {comicData.length > 0 &&
