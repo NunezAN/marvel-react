@@ -48,13 +48,14 @@ const SearchBar = () => {
     dispatch(setSearchInput(formData.searchInput));
     dispatch(startLoading());
     let heroResults = await getHeroIds(formData.searchInput);
-    if (heroResults !== null) {
-    //   let comicsResults = await getComicData(heroResults);
-    //   console.log(comicsResults);
-      reset();
-      navigate("/search");
+    if (heroResults === null) {
+      //   let comicsResults = await getComicData(heroResults);
+      //   console.log(comicsResults);
+      dispatch(removeHeroData());
+      dispatch(stopLoading());
     }
-    
+    reset();
+    navigate("/search");
   }
   return (
     <div className="searchBar">

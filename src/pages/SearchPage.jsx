@@ -12,7 +12,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 const SearchPage = () => {
-  const SearchInput = useSelector(selectSearchInput);
+  const searchInput = useSelector(selectSearchInput);
   const heroData = useSelector(selectHeroData);
   const [comicData, setComicData] = useState([]);
   const [comicCount, setComicCount] = useState(0);
@@ -58,37 +58,40 @@ const SearchPage = () => {
         {isLoading ? (
           <FontAwesomeIcon icon={faSpinner} className="searchbar__icon spin" />
         ) : (
-          <div className="comic__results">
-            <span class="results__text">
-              Found {comicCount} results containing the hero name "{SearchInput}
-              "{" "}
-            </span>
-            <div className="comic__results__comics--wrapper">
-              {comicData.length > 0 &&
-                comicData.map((comic) => (
-                  <div class="comic">
-                    <figure class="comic__img--wrapper">
-                      <img
-                        class="comic__img"
-                        src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
-                        alt=""
-                      />
-                      <div class="comic__wrapper--background"></div>
-                      <div class="comic__description">
-                        <p class="comic__year">
-                          DATE RELEASED: {comic.dates[0].date.substring(0, 10)}
-                        </p>
-                        <p class="comic__description--para">
-                          {comic.description || "NO DESCRIPTION AVAILABLE"}
-                        </p>
-                      </div>
-                    </figure>
+          searchInput.length > 0 && (
+            <div className="comic__results">
+              <span class="results__text">
+                Found {comicCount} results containing the hero name "
+                {searchInput}"{" "}
+              </span>
+              <div className="comic__results__comics--wrapper">
+                {comicData.length > 0 &&
+                  comicData.map((comic) => (
+                    <div class="comic">
+                      <figure class="comic__img--wrapper">
+                        <img
+                          class="comic__img"
+                          src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
+                          alt=""
+                        />
+                        <div class="comic__wrapper--background"></div>
+                        <div class="comic__description">
+                          <p class="comic__year">
+                            DATE RELEASED:{" "}
+                            {comic.dates[0].date.substring(0, 10)}
+                          </p>
+                          <p class="comic__description--para">
+                            {comic.description || "NO DESCRIPTION AVAILABLE"}
+                          </p>
+                        </div>
+                      </figure>
 
-                    <div class="comic__title">{comic.title}</div>
-                  </div>
-                ))}
+                      <div class="comic__title">{comic.title}</div>
+                    </div>
+                  ))}
+              </div>
             </div>
-          </div>
+          )
         )}
       </div>
     </div>
