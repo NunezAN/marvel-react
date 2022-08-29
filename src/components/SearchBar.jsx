@@ -26,21 +26,6 @@ const SearchBar = () => {
     handleSubmit,
     reset,
   } = useForm();
-//   async function getComicData(heroResults) {
-//     let allComicsData = [];
-//     for (let i = 0; i < heroResults.length; i++) {
-//       //fetch all the comic data from the hero ids
-//       let comicData = await axios.get(
-//         `https://gateway.marvel.com:443/v1/public/characters/${heroResults[i].id}/comics?limit=12&apikey=218ad171663f8304bfabed8c5e0ecd2d`
-//       );
-//       //convert the resulting data into an array
-//       const comicsData = comicData.data.data.results;
-//       allComicsData = allComicsData.concat(comicsData);
-//       //sum up the number of results
-//       //   resultsCount += comicsData.length;
-//     }
-//     return allComicsData;
-//   }
 
   async function getHeroIds(heroName) {
     const heroDataStartsWithId = await axios.get(
@@ -69,7 +54,7 @@ const SearchBar = () => {
       reset();
       navigate("/search");
     }
-    dispatch(stopLoading());
+    
   }
   return (
     <div className="searchBar">

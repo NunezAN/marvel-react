@@ -17,3 +17,11 @@
 .section__title--search {
   margin-bottom: 18px;
 }
+.comic__results{
+    display: flex;
+    flex-direction: column;
+}
+.results__text{
+    text-align: left;
+    color: white;
+}
