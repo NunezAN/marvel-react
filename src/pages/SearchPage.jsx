@@ -6,6 +6,7 @@ import {
   selectHeroData,
   selectLoading,
   selectSearchInput,
+  startLoading,
   stopLoading,
 } from "../features/HeroSlice";
 import axios from "axios";
@@ -22,6 +23,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     async function getComicData(heroResults) {
+      dispatch(startLoading());
       let allComicsData = [];
       let comicCounter = 0;
       for (let i = 0; i < heroResults.length; i++) {
@@ -39,6 +41,7 @@ const SearchPage = () => {
       setComicData(allComicsData);
       setComicCount(comicCounter);
       dispatch(stopLoading());
+      console.log(allComicsData);
     }
     getComicData(heroData);
     // console.log(comicData);
@@ -61,7 +64,7 @@ const SearchPage = () => {
         ) : (
           searchInput.length > 0 && (
             <div className="comic__results">
-              <span class="results__text">
+              <span className="results__text">
                 Found {comicCount} results containing the hero name "
                 {searchInput}"{" "}
               </span>
@@ -69,27 +72,6 @@ const SearchPage = () => {
                 {comicData.length > 0 &&
                   comicData.map((comic) => (
                     <Comic key={comic.id} comicData={comic} />
-                    // <div class="comic">
-                    //   <figure class="comic__img--wrapper">
-                    //     <img
-                    //       class="comic__img"
-                    //       src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
-                    //       alt=""
-                    //     />
-                    //     <div class="comic__wrapper--background"></div>
-                    //     <div class="comic__description">
-                    //       <p class="comic__year">
-                    //         DATE RELEASED:{" "}
-                    //         {comic.dates[0].date.substring(0, 10)}
-                    //       </p>
-                    //       <p class="comic__description--para">
-                    //         {comic.description || "NO DESCRIPTION AVAILABLE"}
-                    //       </p>
-                    //     </div>
-                    //   </figure>
-
-                    //   <div class="comic__title">{comic.title}</div>
-                    // </div>
                   ))}
               </div>
             </div>

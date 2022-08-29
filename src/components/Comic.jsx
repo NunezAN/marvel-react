@@ -1,19 +1,20 @@
 import React from "react";
-import "./Comic.css"
+import { Link } from "react-router-dom";
+import "./Comic.css";
 
-const Comic = ({comicData}) => {
+const Comic = ({ comicData }) => {
   return (
-    <div class="comic">
-      <figure class="comic__img--wrapper">
+    <Link to="/Search/comic" className="comic" state={comicData}>
+      <figure className="comic__img--wrapper">
         <img
-          class="comic__img"
+          className="comic__img"
           src={`${comicData.thumbnail.path}/portrait_uncanny.${comicData.thumbnail.extension}`}
           alt=""
         />
       </figure>
 
-      <div class="comic__title">{comicData.title}</div>
-    </div>
+      <div className="comic__title">{comicData.title}</div>
+    </Link>
   );
 };
 
