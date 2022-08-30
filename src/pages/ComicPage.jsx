@@ -3,15 +3,40 @@ import "./ComicPage.css";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
+import { faStar as faStarOutline } from "@fortawesome/free-regular-svg-icons";
+import { db } from "../firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 const ComicPage = () => {
   const location = useLocation();
   const comicData = location.state;
+ async function addToFavorites() {
+    console.log("added to favorites");
+    console.log(comicData);
+     await addDoc(collection(db, "favorites"), comicData);
+  }
+  function removeFromFavorites() {
+    console.log("removeFromFavorites");
+  }
+
   return (
     <div className="comicPage">
-      <Link to="/Search" className="comicPage__back--wrapper">
-        <FontAwesomeIcon className="back--icon" icon={faArrowLeft} />
-      </Link>
+      <div className="comicPage__icons--wrapper">
+        <Link to="/Search" className="comicPage__back--wrapper">
+          <FontAwesomeIcon className="back--icon" icon={faArrowLeft} />
+        </Link>
+        {false ? (
+          <FontAwesomeIcon
+            className="favorite--icon"
+            icon={faStarSolid}
+            onClick={() => removeFromFavorites()}
+          />
+        ) : (
+          <FontAwesomeIcon className="favorite--icon" icon={faStarOutline} onClick={() => addToFavorites()}/>
+        )}
+      </div>
+
       <div className="comicPage__container">
         <div className="comicPage__img--wrapper">
           <img
