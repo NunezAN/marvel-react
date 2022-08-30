@@ -77,15 +77,15 @@
   align-items: center;
   transition: all 300ms ease;
 }
-.spin{
-    animation: rotate 600ms infinite linear;
+.spin {
+  animation: rotate 600ms infinite linear;
 }
 @keyframes rotate {
-    0% {
-      transform: rotate(0);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0);
   }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

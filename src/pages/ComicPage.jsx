@@ -60,7 +60,7 @@ const ComicPage = () => {
     const q = query(comicCollection, where("id", "==", comicData.id));
     const querySnapshot = await getDocs(q);
     const comicDocId= querySnapshot.docs[0].id;
-    console.log(comicDocId);
+    // console.log(comicDocId);
     await deleteDoc(doc(db,"favorites",comicDocId));
     setFavorited(false);
   }
@@ -73,13 +73,13 @@ const ComicPage = () => {
         </Link>
         {favorited ? (
           <FontAwesomeIcon
-            className="favorite--icon"
+            className="favorite--icon glow-blue"
             icon={faStarSolid}
             onClick={() => removeFromFavorites()}
           />
         ) : (
           <FontAwesomeIcon
-            className="favorite--icon"
+            className="favorite--icon glow-red"
             icon={faStarOutline}
             onClick={() => addToFavorites()}
           />
