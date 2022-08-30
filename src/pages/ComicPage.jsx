@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ComicPage.css";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,18 +6,63 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarOutline } from "@fortawesome/free-regular-svg-icons";
 import { db } from "../firebase";
-import { addDoc, collection } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
 const ComicPage = () => {
+  //   const [favorites, setFavorites] = useState([]);
+  const [favorited, setFavorited] = useState(false);
   const location = useLocation();
   const comicData = location.state;
- async function addToFavorites() {
+
+  useEffect(() => {
+    // async function getAllFavorites() {
+    //   const favoritesData = await getDocs(collection(db, "favorites"));
+    //   const data = favoritesData.docs.map((comic) => ({
+    //     ...comic.data(),
+    //     id: comic.id,
+    //   }));
+    //   console.log(data);
+    // }
+
+    // onSnapshot(collection(db, "favorites"), (snapshot) => {
+    //   setFavorites(
+    //     snapshot.docs.map((elem) => ({ id: elem.id, data: elem.data() }))
+    //   );
+    //   //   console.log(favorites);
+    // });
+    // getAllFavorites();
+    async function checkFavorited() {
+      const comicCollection = collection(db, "favorites");
+      const q = query(comicCollection, where("id", "==", comicData.id));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.docs.length > 0 && setFavorited(true);
+    }
+    checkFavorited();
+  }, []);
+
+  async function addToFavorites() {
     console.log("added to favorites");
-    console.log(comicData);
-     await addDoc(collection(db, "favorites"), comicData);
+    // console.log(comicData);
+    await addDoc(collection(db, "favorites"), comicData);
+    setFavorited(true);
   }
-  function removeFromFavorites() {
+  async function removeFromFavorites() {
     console.log("removeFromFavorites");
+    const comicCollection = collection(db, "favorites");
+    const q = query(comicCollection, where("id", "==", comicData.id));
+    const querySnapshot = await getDocs(q);
+    const comicDocId= querySnapshot.docs[0].id;
+    console.log(comicDocId);
+    await deleteDoc(doc(db,"favorites",comicDocId));
+    setFavorited(false);
   }
 
   return (
@@ -26,14 +71,18 @@ const ComicPage = () => {
         <Link to="/Search" className="comicPage__back--wrapper">
           <FontAwesomeIcon className="back--icon" icon={faArrowLeft} />
         </Link>
-        {false ? (
+        {favorited ? (
           <FontAwesomeIcon
             className="favorite--icon"
             icon={faStarSolid}
             onClick={() => removeFromFavorites()}
           />
         ) : (
-          <FontAwesomeIcon className="favorite--icon" icon={faStarOutline} onClick={() => addToFavorites()}/>
+          <FontAwesomeIcon
+            className="favorite--icon"
+            icon={faStarOutline}
+            onClick={() => addToFavorites()}
+          />
         )}
       </div>
 
