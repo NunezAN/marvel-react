@@ -24,17 +24,11 @@ const FavoritesPage = () => {
       const data = favoritesData.docs.map((comic) => ({
         ...comic.data(),
       }));
-    //   console.log(data);
+      //   console.log(data);
       setFavorites(data);
       dispatch(stopLoading());
     }
 
-    // onSnapshot(collection(db, "favorites"), (snapshot) => {
-    //   setFavorites(
-    //     snapshot.docs.map((elem) => ({ id: elem.id, data: elem.data() }))
-    //   );
-    //   //   console.log(favorites);
-    // });
     getAllFavorites();
   }, []);
 
@@ -55,7 +49,7 @@ const FavoritesPage = () => {
                 {favorites.length > 0 &&
                   favorites.map((comic) => (
                     // console.log(comic)
-                    <Comic key={comic.id} comicData={comic} fromFavorites/>
+                    <Comic key={comic.id} comicData={comic} fromFavorites />
                   ))}
               </div>
             </div>

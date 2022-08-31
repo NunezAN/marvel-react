@@ -1,51 +1,68 @@
-.homePage{
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 91vh;
+.homePage {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 91vh;
 }
-.homePage--container{
-    display: flex;
-    width: 100%;
-    height: 100%;
+.homePage--container {
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
-.homePage__img{
-    width: 100%;
-    border-radius: 33px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.homePage__img {
+  width: 100%;
+  border-radius: 33px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-.homePage__title{
-    color: white;
-    font-size: 56px;
-    text-align: center;
-    padding-bottom: 60px;
+.homePage__title {
+  color: white;
+  font-size: 56px;
+  text-align: center;
+  padding-bottom: 60px;
 }
-.homePage__para{
-    color: white;
-    width: 60%;
-    text-align: center;
-    font-size: 18px;
-    color: #848484;
-    padding-bottom: 42px;
+.homePage__para {
+  color: white;
+  width: 60%;
+  text-align: center;
+  font-size: 18px;
+  color: #848484;
+  padding-bottom: 42px;
 }
-.homePage__left{
-    flex: 0.55;
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content: space-between;
-    padding: 24px;
-    margin: auto 0;
-    height: 70%;
-    margin-right: 36px;
-    padding-bottom: 200px;
+.homePage__left {
+  flex: 0.55;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  margin: auto 0;
+  height: 70%;
+  margin-right: 36px;
+  padding-bottom: 200px;
 }
-.homePage__right{
-    flex: 0.45;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.homePage__right {
+  flex: 0.45;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.comics__header > .section__title{
-    font-size: 32px;
+.comics__header > .section__title {
+  font-size: 32px;
+}
+@media (max-width: 768px) {
+  .homePage__right{
+    display: none;
+  }
+  .homePage__left{
+    flex: 1;
+    margin-right: 0;
+  }
+}
+@media (max-width: 550px) {
+    .homePage__title{
+        font-size: 38px;
+    }
+    .homePage__para{
+        font-size: 16px;
+    }
 }

@@ -31,7 +31,7 @@ const Header = () => {
           </Link>
           <Link
             to="/search"
-            className="nav__link clickable"
+            className="nav__link clickable nav__link--searchComics"
             onClick={() => resetData()}
           >
             Find a Comic

@@ -11,7 +11,10 @@ const HomePage = () => {
           <h1 className="homePage__title">EXPLORE THE MARVEL COMIC UNIVERSE</h1>
           <p className="homePage__para">
             Start by entering any heros name from the Marvel universe and find
-            details on all their available comics from the Marvel database.
+            details on all their available comics.
+            <br /><br/>
+            You can add/remove any comic to/from your favorites by selecting the star on the
+            top right of any comic's detail screen.
           </p>
           <SearchBar />
         </div>

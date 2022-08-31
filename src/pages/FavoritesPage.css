@@ -1,20 +1,25 @@
-.favoritesPage{
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    height: 91vh;
-    overflow-y: scroll;
+.favoritesPage {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  height: 91vh;
+  overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .favoritesPage::-webkit-scrollbar {
-    display: none;
+  display: none;
+}
+.favoritePage__title {
+  color: white;
+  text-align: center;
+  font-size: 52px;
+  padding: 24px;
+}
+@media (max-width: 768px) {
+  .favoritePage__title {
+    font-size: 36px;
   }
-.favoritePage__title{
-    color: white;
-    text-align: center;
-    font-size: 52px;
-    padding: 24px;
 }

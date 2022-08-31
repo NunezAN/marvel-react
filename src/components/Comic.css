@@ -1,29 +1,35 @@
 .comic {
-    width: 25%;
-    padding: 24px;
-  }
-.comic:hover{
-    cursor: pointer;
+  width: 25%;
+  padding: 24px;
 }
-  .comic__img--wrapper {
-    position: relative;
-  }
-  .comic__img {
-    transition: all 450ms ease;
-    width: 100%;
-  }
-  .comic:hover .comic__img {
-    transform: scale(1.045);
-  }
-  .comic__title {
-    font-size: 20px;
-    margin: 8px 0px;
-    text-align: center;
-    color: white;
-  }
-  .comic__year {
-    margin-bottom: 10px;
-  }
-  .comic:hover .comic__title {
-    text-decoration: underline;
-  }
+.comic:hover {
+  cursor: pointer;
+}
+.comic__img--wrapper {
+  position: relative;
+}
+.comic__img {
+  transition: all 450ms ease;
+  width: 100%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.comic:hover .comic__img {
+  transform: scale(1.045);
+}
+.comic__title {
+  font-size: 20px;
+  margin: 8px 0px;
+  text-align: center;
+  color: white;
+}
+.comic__year {
+  margin-bottom: 10px;
+}
+.comic:hover .comic__title {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+    .comic{
+        width: 50%;
+    }
+}

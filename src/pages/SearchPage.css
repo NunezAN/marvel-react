@@ -52,3 +52,17 @@ a {
     display: flex;
     justify-content: center;
 }
+@media (max-width: 768px) {
+    .comics__header{
+        margin-left: 12px;
+    }
+    .results__text{
+        margin-left: 12px;
+    }
+}
+@media (max-width: 550px) {
+    .searchPage__search{
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
