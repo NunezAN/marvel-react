@@ -4,7 +4,11 @@ import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Comic from "../components/Comic";
-import { selectLoading, startLoading, stopLoading } from "../features/HeroSlice";
+import {
+  selectLoading,
+  startLoading,
+  stopLoading,
+} from "../features/HeroSlice";
 import { db } from "../firebase";
 import "./FavoritesPage.css";
 
@@ -19,9 +23,8 @@ const FavoritesPage = () => {
       const favoritesData = await getDocs(collection(db, "favorites"));
       const data = favoritesData.docs.map((comic) => ({
         ...comic.data(),
-        id: comic.id,
       }));
-      console.log(data);
+    //   console.log(data);
       setFavorites(data);
       dispatch(stopLoading());
     }
@@ -41,17 +44,18 @@ const FavoritesPage = () => {
         <h1 className="favoritePage__title">My Favorites</h1>
       </div>
       <div className="favoritesPage__comics--wrapper">
-      {isLoading ? (
+        {isLoading ? (
           <div className="loading__container">
             <FontAwesomeIcon icon={faSpinner} className="loading--icon spin" />
           </div>
         ) : (
-            favorites.length > 0 && (
+          favorites.length > 0 && (
             <div className="comic__results">
               <div className="comic__results__comics--wrapper">
                 {favorites.length > 0 &&
                   favorites.map((comic) => (
-                    <Comic key={comic.id} comicData={comic} />
+                    // console.log(comic)
+                    <Comic key={comic.id} comicData={comic} fromFavorites/>
                   ))}
               </div>
             </div>

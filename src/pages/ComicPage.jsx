@@ -20,25 +20,10 @@ const ComicPage = () => {
   //   const [favorites, setFavorites] = useState([]);
   const [favorited, setFavorited] = useState(false);
   const location = useLocation();
-  const comicData = location.state;
+  const comicData = location.state.data;
+  const fromFavorites = location.state.favorited;
 
   useEffect(() => {
-    // async function getAllFavorites() {
-    //   const favoritesData = await getDocs(collection(db, "favorites"));
-    //   const data = favoritesData.docs.map((comic) => ({
-    //     ...comic.data(),
-    //     id: comic.id,
-    //   }));
-    //   console.log(data);
-    // }
-
-    // onSnapshot(collection(db, "favorites"), (snapshot) => {
-    //   setFavorites(
-    //     snapshot.docs.map((elem) => ({ id: elem.id, data: elem.data() }))
-    //   );
-    //   //   console.log(favorites);
-    // });
-    // getAllFavorites();
     async function checkFavorited() {
       const comicCollection = collection(db, "favorites");
       const q = query(comicCollection, where("id", "==", comicData.id));
@@ -46,29 +31,34 @@ const ComicPage = () => {
       querySnapshot.docs.length > 0 && setFavorited(true);
     }
     checkFavorited();
+    // console.log(comicData);
+    // console.log(fromFavorites);
   }, []);
 
   async function addToFavorites() {
-    console.log("added to favorites");
+    // console.log("added to favorites");
     // console.log(comicData);
     await addDoc(collection(db, "favorites"), comicData);
     setFavorited(true);
   }
   async function removeFromFavorites() {
-    console.log("removeFromFavorites");
+    // console.log("removeFromFavorites");
     const comicCollection = collection(db, "favorites");
     const q = query(comicCollection, where("id", "==", comicData.id));
     const querySnapshot = await getDocs(q);
-    const comicDocId= querySnapshot.docs[0].id;
+    const comicDocId = querySnapshot.docs[0].id;
     // console.log(comicDocId);
-    await deleteDoc(doc(db,"favorites",comicDocId));
+    await deleteDoc(doc(db, "favorites", comicDocId));
     setFavorited(false);
   }
 
   return (
     <div className="comicPage">
       <div className="comicPage__icons--wrapper">
-        <Link to="/Search" className="comicPage__back--wrapper">
+        <Link
+          to={!fromFavorites ? "/Search" : "/favorites"}
+          className="comicPage__back--wrapper"
+        >
           <FontAwesomeIcon className="back--icon" icon={faArrowLeft} />
         </Link>
         {favorited ? (

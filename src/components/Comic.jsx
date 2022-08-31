@@ -2,9 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Comic.css";
 
-const Comic = ({ comicData }) => {
+const Comic = ({ comicData, fromFavorites }) => {
   return (
-    <Link to="/Search/comic" className="comic" state={comicData}>
+    <Link
+      to="/Search/comic"
+      className="comic"
+      state={{ data: comicData, favorited: fromFavorites }}
+    >
       <figure className="comic__img--wrapper">
         <img
           className="comic__img"

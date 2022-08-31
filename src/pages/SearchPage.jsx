@@ -41,7 +41,7 @@ const SearchPage = () => {
       setComicData(allComicsData);
       setComicCount(comicCounter);
       dispatch(stopLoading());
-      console.log(allComicsData);
+    //   console.log(allComicsData);
     }
     getComicData(heroData);
     // console.log(comicData);
