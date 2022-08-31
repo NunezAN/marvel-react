@@ -45,6 +45,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-right: 12px;
 }
 .comics__header > .section__title {
   font-size: 32px;
@@ -64,5 +65,8 @@
     }
     .homePage__para{
         font-size: 16px;
+    }
+    .homePage__left{
+        padding: 0px 24px;
     }
 }
